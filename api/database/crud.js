@@ -1,6 +1,5 @@
 const pool = require('./pool');
 
-
 // banco de dados
 const NewUser = (request, response) => {
   const user = {
