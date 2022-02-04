@@ -16,7 +16,8 @@ const redis = require('./redisDatabase/redis')
 //http://localhost:3000/updateUser/klinsman@gmail.com/name/klinsman/email/klinsman@gmail.com/password/123
 app.get('/newUser/:name/email/:email/password/:password', crud.NewUser);
 app.get('/updateUser/:usrID/name/:name/email/:email/password/:password', crud.UpdateUser);
-app.get('/deleteUser/:usrID/', crud.DeleteUser);
+app.get('/deleteUser/:usrID', crud.DeleteUser);
+app.get('/searchUser/:usrID', crud.SearchUser);
 
 app.get('/writeSketch/:usrID/text/:text', redis.WriteSketch);
 app.get('/readSketch/:usrID', redis.ReadSketch);

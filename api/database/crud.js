@@ -9,8 +9,6 @@ const NewUser = (request, response) => {
   }
   
   var sql = `INSERT INTO CRUD (nome, email, senha) VALUES ('${user.name}', '${user.email}', '${user.password}');`
-  pool.query(sql);
-
   pool.query(sql, (error, results) => {
     if (error) {
       response.status(200).json(error);
@@ -20,10 +18,6 @@ const NewUser = (request, response) => {
       response.status(200).json({'status': true});
     }
   });
-};
-
-const teste = (request, response) => {
-  console.log(teste)
 };
 
 const UpdateUser = (request, response) => {
@@ -56,5 +50,17 @@ const DeleteUser = (request, response) => {
   });
 };
 
+const SearchUser = (request, response) => {
+  pool.query(`SELECT nome, senha, email FROM CRUD WHERE CRUD.email = '${request.params.usrID}';`, (error, results) => {
+    if (error) {
+      response.status(200).json(error);
+      throw error;
+    }
+    else{
+      response.status(200).json(results.rows);
+    }
+  });
+};
 
-module.exports = { NewUser, UpdateUser, DeleteUser, teste};
+
+module.exports = { NewUser, UpdateUser, DeleteUser, SearchUser};
