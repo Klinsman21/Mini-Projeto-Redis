@@ -7,6 +7,7 @@ client.on("connect", function (error){
 })
 client.on("error", function (error){
     console.log(error)
+    throw error
 })
 
 

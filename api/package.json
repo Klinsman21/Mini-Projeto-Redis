@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "http-server": "^14.0.0",
     "ioredis": "^4.28.3",
+    "mongodb": "^4.4.0",
     "nodemon": "^2.0.4",
     "pg": "^8.3.3"
   }

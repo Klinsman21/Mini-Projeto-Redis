@@ -11,6 +11,7 @@ app.use(cors());
 
 const crud = require('./database/crud')
 const redis = require('./redisDatabase/redis')
+const mongo = require('./database/mongo')
 
 
 //http://localhost:3000/updateUser/klinsman@gmail.com/name/klinsman/email/klinsman@gmail.com/password/123
@@ -21,6 +22,9 @@ app.get('/searchUser/:usrID', crud.SearchUser);
 
 app.get('/writeSketch/:usrID/text/:text', redis.WriteSketch);
 app.get('/readSketch/:usrID', redis.ReadSketch);
+
+app.get('/savePost/:usrID/body/:text/title/:title/date/:date', mongo.SavePost);
+app.get('/readAllPosts/:usrID', mongo.getAllPosts);
 
 app.listen(process.env.PORT, () => { 
   console.log(`http://localhost:${process.env.PORT}`); 
